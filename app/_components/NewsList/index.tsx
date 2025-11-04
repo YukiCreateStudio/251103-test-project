@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./index.module.css";
 import Image from "next/image";
 import { News } from "@/app/_libs/microcms";
@@ -8,7 +9,6 @@ type Props = {
   news: News[];
 };
 
-
 export default function NewsList({ news }: Props) {
   if (news.length === 0) {
     return <p>記事がありません。</p>;
@@ -17,7 +17,7 @@ export default function NewsList({ news }: Props) {
     <ul>
       {news.map((article) => (
         <li key={article.id} className={styles.list}>
-          <div className={styles.link}>
+          <Link href={`/news/${article.id}`} className={styles.link}>
             <Image
               className={styles.image}
               src="/no-image.png"
@@ -28,11 +28,15 @@ export default function NewsList({ news }: Props) {
             <dl className={styles.content}>
               <dt className={styles.title}>{article.title}</dt>
               <dd className={styles.meta}>
-                <span><Category category={article.category}/></span>
-                <span><Date date={article.publishedAt}/></span>
+                <span>
+                  <Category category={article.category} />
+                </span>
+                <span>
+                  <Date date={article.publishedAt} />
+                </span>
               </dd>
             </dl>
-          </div>
+          </Link>
         </li>
       ))}
     </ul>
