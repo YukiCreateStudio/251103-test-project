@@ -36,6 +36,8 @@ const data: { contents: News[] } = {
 };
 
 export default function Home() {
+  const sliceData = data.contents.slice(0, 2);
+
   return (
     <>
       <section className={styles.top}>
@@ -53,10 +55,11 @@ export default function Home() {
           height={1200}
         />
       </section>
+
       <section className={styles.news}>
         <h2 className={styles.newsTitle}>News</h2>
         <ul>
-          {data.contents.map((article) => (
+          {sliceData.map((article) => (
             <li key={article.id} className={styles.list}>
               <div className={styles.link}>
                 <Image
@@ -71,13 +74,7 @@ export default function Home() {
                   <dd className={styles.meta}>
                     <span className={styles.tag}>{article.category.name}</span>
                     <span className={styles.date}>
-                      <Image
-                        src="/clock.svg"
-                        alt=""
-                        width={16}
-                        height={16}
-                        priority
-                      />
+                      <Image src="/clok.svg" alt="" width={16} height={16} />
                       {article.publishedAt}
                     </span>
                   </dd>
