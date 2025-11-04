@@ -10,8 +10,8 @@ export default function Hero({ title, sub }: Props) {
   return (
     <section className={styles.container}>
       <div>
-        <h1 className={styles.title}>{ title }</h1>
-        <p className={styles.description}>{ sub }</p>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.description}>{sub}</p>
       </div>
       <Image
         className={styles.bgimg}
